@@ -1,0 +1,63 @@
+[build-system]
+requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dataretrieval"
+description = "Discover and retrieve water data from U.S. federal hydrologic web services."
+readme = "README.md"
+requires-python = ">=3.8"
+keywords = ["USGS", "water data"]
+license = {file = "LICENSE.md"}
+authors = [
+  {name = "Timothy Hodson", email = "thodson@usgs.gov"},
+]
+maintainers = [
+  {name = "Elise Hinman", email = "ehinman@usgs.gov"},
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    "requests",
+    "pandas==2.*",
+]
+dynamic = ["version"]
+
+[tool.setuptools]
+packages = ["dataretrieval", "dataretrieval.codes"]
+
+[project.optional-dependencies]
+test = [
+  "pytest > 5.0.0",
+  "pytest-cov[all]",
+  "coverage",
+  "requests-mock",
+  "flake8",
+]
+doc = [
+  "sphinx",
+  "sphinx-rtd-theme",
+  "nbsphinx",
+  "nbsphinx_link",
+  "ipython",
+  "ipykernel",
+  "matplotlib",
+]
+nldi = [
+  'geopandas>=0.10'
+]
+
+[project.urls]
+homepage = "https://github.com/DOI-USGS/dataretrieval-python"
+documentation = "https://doi-usgs.github.io/dataretrieval-python/"
+repository = "https://github.com/DOI-USGS/dataretrieval-python.git"
+
+[tool.setuptools_scm]
+write_to = "dataretrieval/_version.py"
+
+[tool.isort]
+profile = "black"
+
+[tool.black]
+skip-string-normalization = true
